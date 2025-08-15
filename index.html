@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Surpresa! Charmander 🧡🔥</title>
+  <meta name="description" content="Uma chuva de Charmanders fofos"/>
+  <style>
+    :root { --gap: 12px; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, Arial, sans-serif;
+      background: #ffefe5;
+      color: #222;
+    }
+    header {
+      position: sticky; top: 0;
+      background: #ffffffcc; backdrop-filter: blur(6px);
+      padding: 12px 16px; border-bottom: 1px solid #ffd1b8;
+    }
+    h1 { margin: 0; font-size: 1.25rem; }
+    .grid {
+      padding: 16px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: var(--gap);
+      max-width: 1200px; margin: 0 auto;
+    }
+    .card {
+      background: white; border: 1px solid #ffd1b8;
+      border-radius: 16px; overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,.05);
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,.08);
+    }
+    .card img {
+      width: 100%; height: 160px; object-fit: cover; display: block;
+    }
+    .tag {
+      padding: 8px 10px; font-size: .9rem; text-align: center;
+      background: #fff7f2;
+    }
+    footer { text-align: center; padding: 24px; color: #444; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🔥 Surpresa! Uma chuva de Charmanders 🧡</h1>
+  </header>
+
+  <main class="grid" id="gallery"></main>
+
+  <footer>Pegadinha inofensiva — só fofura 🔥</footer>
+
+  <script>
+    const imagens = [
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
+      "https://assets.pokemon.com/assets/cms2/img/pokedex/full/004.png",
+      "https://archives.bulbagarden.net/media/upload/thumb/7/73/Charmander.png/800px-Charmander.png",
+      "https://i.pinimg.com/originals/5e/62/b2/5e62b2154d348f73d5d80752a42e65c6.png",
+      "https://i.pinimg.com/originals/7c/35/56/7c3556b53c177219ea28e019c3af08dc.png",
+      "https://i.pinimg.com/originals/fb/14/73/fb1473f2d5f8e4abed3faef1e4e5a316.png",
+      "https://i.pinimg.com/originals/f6/60/4c/f6604ccf4f0a1e61f02dd8362ecfd2f0.png",
+      "https://i.pinimg.com/originals/5b/9b/0e/5b9b0e89dc3de4cf8bc7b5f68e68bb1a.png"
+    ];
+
+    // Repete imagens para encher a página
+    while (imagens.length < 60) {
+      imagens.push(...imagens.slice(0, imagens.length));
+    }
+
+    const gallery = document.getElementById('gallery');
+    imagens.forEach((src, i) => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <img src="${src}" alt="Charmander ${i+1}" loading="lazy">
+        <div class="tag">Charmander #${i+1}</div>
+      `;
+      gallery.appendChild(card);
+    });
+  </script>
+</body>
+</html>
